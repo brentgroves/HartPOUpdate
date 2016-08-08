@@ -242,11 +242,8 @@ SourceRecordset.Open "SELECT * FROM [PO]  WHERE [PO].POSTATUSNO = 3 and [PO].SIT
    DestinationRecordset.Fields("fcshipto") = "SELF"
    DestinationRecordset.Fields("forddate") = FormatDateTime(SourceRecordset.Fields("POdate"), 2)
    DestinationRecordset.Fields("fstatus") = "OPEN"
-   If chkAl.Value = vbChecked Then
-       DestinationRecordset.Fields("fvendno") = GetVendorNumber.Fields("UDFHARTSELLEVENDOR")
-   Else
-      DestinationRecordset.Fields("fvendno") = GetVendorNumber.Fields("UDFM2MVENDORNUMBER")
-   End If
+   'Hartselle / Indiana diff
+   DestinationRecordset.Fields("fvendno") = GetVendorNumber.Fields("UDFHARTSELLEVENDOR")
    DestinationRecordset.Fields("fbuyer") = "CM"
    DestinationRecordset.Fields("fchangeby") = "CM"
    DestinationRecordset.Fields("fshipvia") = "UPS-OURS"
@@ -280,11 +277,17 @@ SourceRecordset.Open "SELECT * FROM [PO]  WHERE [PO].POSTATUSNO = 3 and [PO].SIT
    DestinationRecordset.Fields("fctype") = "O"
    DestinationRecordset.Fields("fmsnstreet") = CompanySourceRecordset.Fields("fmstreet")
    DestinationRecordset.Fields("fpoclosing") = "Please reference our purchase order number on all correspondence.  " _
-   & "Notification of changes regarding quantities to be shipped and changes in the delivery schedule are required." _
-   Chr (13) + _
-   & "PO APPROVALS:" + Chr(13) + _
-   & "Requr. _______________________________________" + Chr(13) + _
-   "Dept. Head ___________________________________" + Chr(13) + "G.M. Only: All Items Over $500.00" + Chr(13) + "G.M ________________________________________" + Chr(13) + "VP/CFO. Only: All Assests/CER and ER Over $10000.00" + Chr(13) + "VP/CFO _____________________________________" + Chr(13) + "Pres. Only: All Assets/CER/ER and/or PO’s Over $10000.00" + Chr(13) + "President _____________________________________"
+   & "Notification of changes regarding quantities to be shipped and changes in the delivery schedule are required." + _
+   Chr(13) + Chr(13) + _
+   "PO APPROVALS:" + Chr(13) + Chr(13) + _
+   "Requr. _______________________________________" + Chr(13) + _
+   "Dept. Head ___________________________________" + Chr(13) + Chr(13) + _
+   "G.M. Only: All Items Over $500.00" + Chr(13) + _
+   "G.M ________________________________________" + Chr(13) + _
+   "VP/Group Controller. Only: All Assests/CER and ER Over $10,000.00" + Chr(13) + _
+   "VP/Group Controller _____________________________________" + Chr(13) + _
+   "Pres. Only: All Assets/CER/ER and/or PO’s Over $10,000.00" + Chr(13) + _
+   "President _____________________________________"
    DestinationRecordset.Fields("fndbrmod") = 0
 
     DestinationRecordset.Fields("fcsncity") = CompanySourceRecordset.Fields("fccity")
@@ -327,12 +330,8 @@ SourceRecordset.Open "SELECT * FROM [PO]  WHERE [PO].POSTATUSNO = 3 and [PO].SIT
      ItemDestinationRecordset.Fields("fitemno") = "  " + Trim(CStr(NextItem))
     End If
     ItemDestinationRecordset.Fields("frelsno") = "  0"
-    'If chkAl.Value = vbChecked Then
-        ItemDestinationRecordset.Fields("fcategory") = ItemSourceRecordset.Fields("UDFHSPOCAT")
-   ' Else
-    '''''''''''''''''''''error'''''''''''''
-    '    ItemDestinationRecordset.Fields("fcategory") = ItemSourceRecordset.Fields("UDF_POCATEGORY")
-    'End If
+    'Hartselle / Indiana diff
+    ItemDestinationRecordset.Fields("fcategory") = ItemSourceRecordset.Fields("UDFHSPOCAT")
     ItemDestinationRecordset.Fields("fjoopno") = 0
     ItemDestinationRecordset.Fields("flstcost") = ItemSourceRecordset.Fields("Cost")
     ItemDestinationRecordset.Fields("fstdcost") = ItemSourceRecordset.Fields("Cost")
