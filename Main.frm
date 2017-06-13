@@ -280,14 +280,14 @@ SourceRecordset.Open "SELECT * FROM [PO]  WHERE [PO].POSTATUSNO = 3 and [PO].SIT
    & "Notification of changes regarding quantities to be shipped and changes in the delivery schedule are required." + _
    Chr(13) + Chr(13) + _
    "PO APPROVALS:" + Chr(13) + Chr(13) + _
-   "Requr. _______________________________________" + Chr(13) + _
-   "Dept. Head ___________________________________" + Chr(13) + Chr(13) + _
+   "Requr. _______________________________________________" + Chr(13) + _
+   "Dept. Head ___________________________________________" + Chr(13) + Chr(13) + _
    "G.M. Only: All Items Over $500.00" + Chr(13) + _
-   "G.M ________________________________________" + Chr(13) + _
-   "VP/Group Controller. Only: All Assests/CER and ER Over $10,000.00" + Chr(13) + _
-   "VP/Group Controller _____________________________________" + Chr(13) + _
+   "G.M. ________________________________________________" + Chr(13) + _
+   "Plant Controller Only: All Assests/CER and ER Over $10,000.00" + Chr(13) + _
+   "Plant Controller_______________________________________" + Chr(13) + _
    "Pres. Only: All Assets/CER/ER and/or PO’s Over $10,000.00" + Chr(13) + _
-   "President _____________________________________"
+   "President ____________________________________________"
    DestinationRecordset.Fields("fndbrmod") = 0
 
     DestinationRecordset.Fields("fcsncity") = CompanySourceRecordset.Fields("fccity")
